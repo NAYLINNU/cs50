@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD5 Encryption and Decryption</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">MD5 Encryption and Decryption</h3>
+                        <form method="POST" action="{{ url_for('md5_page') }}">
+                            <div class="form-group">
+                                <label for="plaintext">Text to Encrypt/Decrypt</label>
+                                <textarea class="form-control" id="plaintext" name="plaintext" rows="3"
+                                    required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="md5Result">Result</label>
+                                <div class="input-group">
+                                    <textarea class="form-control" id="md5Result" name="md5Result" rows="3"
+                                        readonly>{{ md5Result }}</textarea>
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-secondary"
+                                            onclick="copyResult()">Copy</button>
+                                        <button type="button" class="btn btn-danger"
+                                            onclick="clearResult()">Clear</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" name="action" value="encrypt"
+                                    class="btn btn-primary">Encrypt</button>
+                                <button type="submit" name="action" value="decrypt"
+                                    class="btn btn-secondary">Decrypt</button>
+                            </div>
+                            <a href="{{ url_for('dashboard') }}" class="btn btn-link">home</a>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyResult() {
+            var md5Result = document.getElementById('md5Result');
+            md5Result.select();
+            document.execCommand('copy');
+        }
+
+        function clearResult() {
+            document.getElementById('md5Result').value = '';
+        }
+    </script>
+</body>
+
+</html>

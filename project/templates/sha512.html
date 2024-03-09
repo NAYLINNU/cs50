@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHA-512 Encryption and Decryption</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">SHA-512 Encryption and Decryption</h3>
+                        <!-- Update the form fields in your HTML template -->
+                        <form method="POST" action="{{ url_for('sha512_page') }}">
+                            <div class="form-group">
+                                <label for="sha512Text">Text to Encrypt/Decrypt</label>
+                                <textarea class="form-control" id="sha512Text" name="sha512Text" rows="3"
+                                    required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="sha512Result">Result</label>
+                                <div class="input-group">
+                                    <textarea class="form-control" id="sha512Result" name="sha512Result" rows="3"
+                                        readonly>{{ sha512Result }}</textarea>
+                                    <div class="input-group-append">
+                                        <button type="button" class="btn btn-secondary"
+                                            onclick="copyResult('sha512Result')">Copy</button>
+                                        <button type="button" class="btn btn-danger"
+                                            onclick="clearResult('sha512Result')">Clear</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" name="sha512Action" value="encrypt"
+                                    class="btn btn-primary">Encrypt</button>
+                                <button type="submit" name="sha512Action" value="decrypt"
+                                    class="btn btn-secondary">Decrypt</button>
+                            </div>
+                            <a href="{{ url_for('dashboard') }}" class="btn btn-link">home</a>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyResult() {
+            var sha512Result = document.getElementById('sha512Result');
+            sha512Result.select();
+            document.execCommand('copy');
+        }
+
+        function clearResult() {
+            document.getElementById('sha512Result').value = '';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Register</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 100px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">Login and Register</h3>
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message }}">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <div id="userExistsAlert" class="alert alert-danger" style="display:none;">
+                            Username already exists. Please choose another username.
+                        </div>
+                        <form id="authForm" method="POST" action="{{ url_for('login') }}">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="button" class="btn btn-link" onclick="toggleForm()">Switch to
+                                Register</button>
+                        </form>
+                        <form id="registerForm" method="POST" action="{{ url_for('register') }}" style="display: none;">
+                            <div class="form-group">
+                                <label for="regUsername">Username</label>
+                                <input type="text" class="form-control" id="regUsername" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regPassword">Password</label>
+                                <input type="password" class="form-control" id="regPassword" name="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-success">Register</button>
+                            <button type="button" class="btn btn-link" onclick="toggleForm()">Switch to Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm() {
+            var loginForm = document.getElementById('authForm');
+            var registerForm = document.getElementById('registerForm');
+            var userExistsAlert = document.getElementById('userExistsAlert');
+
+            if (loginForm.style.display === 'none') {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+
+            } else {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+
+            }
+        }
+    </script>
+</body>
+
+</html>

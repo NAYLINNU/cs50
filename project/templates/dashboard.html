@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            color: #333;
+        }
+
+        .btn-primary,
+        .btn-success,
+        .btn-warning,
+        .btn-info,
+        .btn-danger {
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+
+        .btn-danger {
+            margin-top: 20px;
+        }
+
+        .video {
+            position: absolute;
+            left: 400px;
+        }
+    </style>
+</head>
+{% block main %}
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center " style="color:purple">Welcome To Hashing </h3>
+                        <!-- Links to MD5, SHA-256, and SHA-512 pages -->
+                        <div class="text-center mb-4">
+                            <!-- Use JavaScript to submit a form with a POST request -->
+                            <a href="#" class="btn btn-primary" onclick="submitForm('{{ url_for('md5_page') }}')">MD5
+                                Page</a>
+                            <a href="#" class="btn btn-success"
+                                onclick="submitForm('{{ url_for('sha256_page') }}')">SHA-256 Page</a>
+                            <a href="#" class="btn btn-warning"
+                                onclick="submitForm('{{ url_for('sha512_page') }}')">SHA-512 Page</a>
+
+                            <a href="#" class="btn btn-info"
+                                onclick="submitForm('{{ url_for('base64_page') }}')">Base-64 Page</a>
+
+                        </div>
+                        <!-- Add any other content you want on the dashboard page -->
+                        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div><br><br>
+    <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/QQ5_KwBbz7Y?si=u1XTdzsjZ4o3HZM4"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+    </iframe>
+
+
+    <script>
+        // Function to submit a form with a POST request
+        function submitForm(action) {
+            var form = document.createElement('form');
+            form.setAttribute('method', 'post');
+            form.setAttribute('action', action);
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</body>
+{% endblock %}
+
+</html>

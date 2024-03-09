@@ -1,0 +1,4 @@
+flask
+hashlib
+sqlite3
+base64
