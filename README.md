@@ -2,7 +2,7 @@
 #### Video Demo: https://youtu.be/QQ5_KwBbz7Y?si=YXYusfFbu6gxh-8C
 
 # Languages: 
-#### Scracth, C ,pythoh,javascript,css and html 
+#### Scracth, C ,pythoh,Flask,javascript,css and html 
 ## Practice Problems / Labs / Problem Sets
 [Week 1 - C](https://cs50.harvard.edu/x/2024/weeks/1/)
 
